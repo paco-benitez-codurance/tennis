@@ -6,7 +6,7 @@ class TennisScoreCalculatorImpl : TennisScoreCalculator {
         return if (player1Points == player2Points)
             humanPoint(player1Points) + " all"
         else
-            "fifteen to love"
+            "${humanPoint(player1Points)} to love"
     }
 
     private fun humanPoint(player1Points: Int): String {
