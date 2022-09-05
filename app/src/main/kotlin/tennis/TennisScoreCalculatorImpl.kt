@@ -14,6 +14,7 @@ class TennisScoreCalculatorImpl : TennisScoreCalculator {
             0 -> "love"
             1 -> "fifteen"
             2 -> "thirty"
+            3 -> "forty"
             else -> throw NotValidPointException()
         }
     }

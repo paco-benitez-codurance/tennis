@@ -6,6 +6,7 @@ import io.kotest.matchers.shouldBe
 
 class TennisScoreCalculatorShould : StringSpec({
     lateinit var tennisScoreCalculator: TennisScoreCalculator
+
     beforeEach {
         tennisScoreCalculator = TennisScoreCalculator.newInstance()
     }
