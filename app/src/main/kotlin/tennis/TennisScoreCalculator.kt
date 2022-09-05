@@ -1,6 +1,5 @@
 package tennis
 
-import tennis.impl.TennisScoreCalculatorImpl
 
 
 interface TennisScoreCalculator {
