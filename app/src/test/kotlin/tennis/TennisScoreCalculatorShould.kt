@@ -16,16 +16,18 @@ class TennisScoreCalculatorShould : StringSpec({
         }
     }
 
-    "both players having same score below forty should return score all" {
+    "return score all when both players having same score below forty" {
         listOf(0 to "love", 1 to "fifteen", 2 to "thirty")
             .map { (score, expected) ->
                 tennisScoreCalculator.score(score, score) shouldBe "$expected all"
             }
     }
 
-    "player1: 1 point, player1: 0 points should be fifteen to love" {
-        tennisScoreCalculator.score(1, 0) shouldBe "fifteen to love"
+    "return human readable scores when player1 have score distinct below forty and over 0 and player2 have score 0" {
+        listOf(
+            (1 to 0) to "fifteen to love",
+            (2 to 0) to "thirty to love",
+            (3 to 0) to "forty to love",
+        ).map { (scores, expected) -> tennisScoreCalculator.score(scores.first, scores.second) shouldBe expected }
     }
-
-
 })
