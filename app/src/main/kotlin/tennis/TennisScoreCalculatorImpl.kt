@@ -6,7 +6,7 @@ class TennisScoreCalculatorImpl(private val tennisScoreNumbers: TennisScoreNumbe
         return if (tennisScoreNumbers.isEven(player1Points,player2Points))
             humanPoint(player1Points) + " all"
         else
-            "${humanPoint(player1Points)} to love"
+            "${humanPoint(player1Points)} to ${humanPoint(player2Points)}"
     }
 
     private fun humanPoint(player1Points: Int): String {
