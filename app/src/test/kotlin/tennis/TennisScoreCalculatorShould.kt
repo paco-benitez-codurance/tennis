@@ -23,5 +23,9 @@ class TennisScoreCalculatorShould : StringSpec({
             }
     }
 
+    "player1: 1 point, player1: 0 points should be fifteen to love" {
+        tennisScoreCalculator.score(1, 0) shouldBe "fifteen to love"
+    }
+
 
 })
