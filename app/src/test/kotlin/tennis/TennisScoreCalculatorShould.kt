@@ -3,7 +3,6 @@ package tennis
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 import io.mockk.every
 import io.mockk.mockk
 
@@ -15,12 +14,12 @@ class TennisScoreCalculatorShould : FreeSpec({
         tennisScoreNumbers = mockk()
         tennisScoreCalculator = TennisScoreCalculator.newInstance(tennisScoreNumbers)
         every { tennisScoreNumbers.isAdvantagePlayer1(any(), any()) } returns false
+        every { tennisScoreNumbers.isEven(any(), any()) } returns false
+        every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
     }
 
     "Invalid Inputs" - {
         "should not allow negative numbers" {
-            every { tennisScoreNumbers.isEven(any(), any()) } returns false
-            every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
             shouldThrow<NotValidPointException> {
                 tennisScoreCalculator.score(-1, 0)
             }
@@ -29,7 +28,6 @@ class TennisScoreCalculatorShould : FreeSpec({
 
     "return score all when both players having same score below forty" - {
         every { tennisScoreNumbers.isEven(any(), any()) } returns true
-        every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
         listOf(0 to "love", 1 to "fifteen", 2 to "thirty")
             .forEach { (score, expected) ->
                 "checking score $score" {
@@ -39,8 +37,6 @@ class TennisScoreCalculatorShould : FreeSpec({
     }
 
     "return human readable scores when player1 have score distinct below forty and over 0 and player2 have score 0" - {
-        every { tennisScoreNumbers.isEven(any(), any()) } returns false
-        every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
         listOf(
             (1 to 0) to "fifteen to love",
             (2 to 0) to "thirty to love",
@@ -53,8 +49,6 @@ class TennisScoreCalculatorShould : FreeSpec({
     }
 
     "method call should be symmetric" - {
-        every { tennisScoreNumbers.isEven(any(), any()) } returns false
-        every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
 
         fun reverseOrderOfWords(s: String) = s.split(" ").reversed().joinToString(" ")
 
@@ -73,7 +67,6 @@ class TennisScoreCalculatorShould : FreeSpec({
     }
 
     "If at least three points have been scored by each player and the scores are equal, the score is “deuce" - {
-        every { tennisScoreNumbers.isEven(any(), any()) } returns true
         every { tennisScoreNumbers.isDeuce(any(), any()) } returns true
         tennisScoreCalculator.score(
             3,
@@ -82,8 +75,6 @@ class TennisScoreCalculatorShould : FreeSpec({
     }
 
     "If at least three points have been scored by each player and a player has one more point than his opponent, the score is “advantage” for the player in the lead." - {
-        every { tennisScoreNumbers.isEven(any(), any()) } returns false
-        every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
         every { tennisScoreNumbers.isAdvantagePlayer1(any(), any()) } returns true
         tennisScoreCalculator.score(
             3,
