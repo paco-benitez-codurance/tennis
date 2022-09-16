@@ -64,7 +64,10 @@ class TennisScoreCalculatorShould : FreeSpec({
                 ) shouldBe reverseOrderOfWords(tennisScoreCalculator.score(player2Points, player1Points))
             }
         }
+    }
 
+    "If at least three points have been scored by each player and the scores are equal, the score is “deuce" {
+        "4"
     }
 
 })
