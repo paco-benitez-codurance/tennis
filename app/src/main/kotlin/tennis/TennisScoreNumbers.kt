@@ -6,7 +6,6 @@ class TennisScoreNumbers {
     }
 
     fun isDeuce(point1: Int, point2: Int): Boolean {
-        TODO("Not yet implemented")
+        return isEven(point1, point2) && point1 > 3
     }
-
 }

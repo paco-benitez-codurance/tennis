@@ -19,4 +19,17 @@ class TennisScoreNumbersShould : FreeSpec({
         }
     }
 
+    "IsDuece" - {
+        "should not be if are less than three" {
+            tennisScoreNumbers.isDeuce(2, 2) shouldBe false
+        }
+        "should not be if are not equal" {
+            tennisScoreNumbers.isDeuce(4, 5) shouldBe false
+        }
+        "should true if are equal and more than three" {
+            tennisScoreNumbers.isDeuce(4, 4) shouldBe true
+            tennisScoreNumbers.isDeuce(5, 5) shouldBe true
+        }
+    }
+
 })
