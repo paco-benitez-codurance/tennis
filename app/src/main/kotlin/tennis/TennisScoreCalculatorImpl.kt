@@ -3,7 +3,9 @@ package tennis
 
 class TennisScoreCalculatorImpl(private val tennisScoreNumbers: TennisScoreNumbers) : TennisScoreCalculator {
     override fun score(player1Points: Int, player2Points: Int): String {
-        return if (tennisScoreNumbers.isEven(player1Points,player2Points))
+        return if (tennisScoreNumbers.isDeuce(player1Points,player2Points))
+            "deuce"
+        else if (tennisScoreNumbers.isEven(player1Points,player2Points))
             humanPoint(player1Points) + " all"
         else
             "${humanPoint(player1Points)} to ${humanPoint(player2Points)}"

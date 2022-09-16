@@ -3,6 +3,7 @@ package tennis
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.mockk.every
 import io.mockk.mockk
 
@@ -66,8 +67,13 @@ class TennisScoreCalculatorShould : FreeSpec({
         }
     }
 
-    "If at least three points have been scored by each player and the scores are equal, the score is “deuce" {
-        "4"
+    "If at least three points have been scored by each player and the scores are equal, the score is “deuce" - {
+        every { tennisScoreNumbers.isEven(any(), any()) } returns true
+        every { tennisScoreNumbers.isDeuce(any(), any()) } returns true
+        tennisScoreCalculator.score(
+            3,
+            3
+        ) shouldBe "deuce"
     }
 
 })
