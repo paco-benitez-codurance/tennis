@@ -88,7 +88,21 @@ class TennisScoreNumbersShould : FreeSpec({
         "should be false if has less than two point more than his opponent" {
             tennisScoreNumbers.isPlayer1Win(4, 3) shouldBe false
         }
+    }
 
+    "isPlayer1Win should be same than isPlayer2Win" - {
+        listOf(
+            (4 to 0),
+            (3 to 0),
+            (4 to 3),
+        ).forEach { (player1Points, player2Points) ->
+            "$player1Points vs $player2Points should be symmetric" {
+                tennisScoreNumbers.isPlayer1Win(
+                    player1Points,
+                    player2Points
+                ) shouldBe tennisScoreNumbers.isPlayer2Win(player2Points, player1Points)
+            }
+        }
     }
 
 })

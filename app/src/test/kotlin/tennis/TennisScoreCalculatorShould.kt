@@ -18,6 +18,7 @@ class TennisScoreCalculatorShould : FreeSpec({
         every { tennisScoreNumbers.isEven(any(), any()) } returns false
         every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
         every { tennisScoreNumbers.isPlayer1Win(any(), any()) } returns false
+        every { tennisScoreNumbers.isPlayer2Win(any(), any()) } returns false
     }
 
     "Invalid Inputs" - {
