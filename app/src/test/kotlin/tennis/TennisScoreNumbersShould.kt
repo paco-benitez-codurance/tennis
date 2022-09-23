@@ -69,7 +69,25 @@ class TennisScoreNumbersShould : FreeSpec({
                 ) shouldBe tennisScoreNumbers.isAdvantagePlayer2(player2Points, player1Points)
             }
         }
+    }
 
+
+    "isPlayer1Win" - {
+        "should be true if first player won at least 4 points" {
+            tennisScoreNumbers.isPlayer1Win(4, 0) shouldBe true
+        }
+
+        "should be false if first player had not won at least 4 points" {
+            tennisScoreNumbers.isPlayer1Win(3, 0) shouldBe false
+        }
+
+        "should be true if has two point more than his opponent" {
+            tennisScoreNumbers.isPlayer1Win(4, 0) shouldBe true
+        }
+
+        "should be false if has less than two point more than his opponent" {
+            tennisScoreNumbers.isPlayer1Win(4, 3) shouldBe false
+        }
 
     }
 

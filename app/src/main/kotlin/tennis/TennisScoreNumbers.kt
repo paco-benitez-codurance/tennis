@@ -18,7 +18,7 @@ class TennisScoreNumbers {
     }
 
     fun isPlayer1Win(point1: Int, point2: Int): Boolean {
-        TODO("Not yet implemented")
+        return point1 >= 4 && point1 - point2 >= 2
     }
 
     fun isPlayer2Win(point1: Int, point2: Int): Boolean {
