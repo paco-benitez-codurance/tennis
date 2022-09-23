@@ -10,6 +10,6 @@ class TennisScoreNumbers {
     }
 
     fun isAdvantagePlayer1(point1: Int, point2: Int): Boolean {
-        TODO("Not yet implemented")
+        return point1 > 3 && point2 > 3 && point1 == point2 + 1
     }
 }

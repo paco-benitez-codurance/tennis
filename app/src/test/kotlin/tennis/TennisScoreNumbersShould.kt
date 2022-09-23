@@ -32,4 +32,27 @@ class TennisScoreNumbersShould : FreeSpec({
         }
     }
 
+    "IsAdventagePlayer1" - {
+        "should be true if more than three for each player" {
+            tennisScoreNumbers.isAdvantagePlayer1(5, 4) shouldBe true
+        }
+
+        "should be false if less than three for each player" {
+            tennisScoreNumbers.isAdvantagePlayer1(3, 2) shouldBe false
+        }
+
+        "should be true if player has one more point than his opponent" {
+            tennisScoreNumbers.isAdvantagePlayer1(5, 4) shouldBe true
+        }
+
+        "should be false if player has two more point than his opponent" {
+            tennisScoreNumbers.isAdvantagePlayer1(5, 3) shouldBe false
+        }
+
+        "should be false if player has same point than his opponent" {
+            tennisScoreNumbers.isAdvantagePlayer1(5, 5) shouldBe false
+        }
+
+    }
+
 })
