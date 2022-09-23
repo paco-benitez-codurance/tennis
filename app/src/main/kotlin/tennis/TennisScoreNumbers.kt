@@ -16,4 +16,12 @@ class TennisScoreNumbers {
     fun isAdvantagePlayer2(point1: Int, point2: Int): Boolean {
         return isAdvantagePlayer1(point2, point1)
     }
+
+    fun isPlayer1Win(point1: Int, point2: Int): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    fun isPlayer2Win(point1: Int, point2: Int): Boolean {
+        TODO("Not yet implemented")
+    }
 }

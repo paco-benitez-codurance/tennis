@@ -11,6 +11,10 @@ class TennisScoreCalculatorImpl(private val tennisScoreNumbers: TennisScoreNumbe
             "advantage player1"
         else if (tennisScoreNumbers.isAdvantagePlayer2(player1Points, player2Points))
             "advantage player2"
+        else if (tennisScoreNumbers.isPlayer1Win(player1Points, player2Points))
+            "player1 wins"
+        else if (tennisScoreNumbers.isPlayer2Win(player1Points, player2Points))
+            "player2 wins"
         else
             "${humanPoint(player1Points)} to ${humanPoint(player2Points)}"
     }
