@@ -32,7 +32,7 @@ class TennisScoreNumbersShould : FreeSpec({
         }
     }
 
-    "IsAdventagePlayer1" - {
+    "IsAdvantagePlayer1" - {
         "should be true if more than three for each player" {
             tennisScoreNumbers.isAdvantagePlayer1(5, 4) shouldBe true
         }
@@ -52,6 +52,24 @@ class TennisScoreNumbersShould : FreeSpec({
         "should be false if player has same point than his opponent" {
             tennisScoreNumbers.isAdvantagePlayer1(5, 5) shouldBe false
         }
+    }
+
+    "IsAdvantagePlayer2 should be same than IsAdvantagePlayer1" - {
+        listOf(
+            (5 to 4),
+            (3 to 2),
+            (5 to 4),
+            (5 to 3),
+            (5 to 5)
+        ).forEach { (player1Points, player2Points) ->
+            "$player1Points vs $player2Points should be symmetric" {
+                tennisScoreNumbers.isAdvantagePlayer1(
+                    player1Points,
+                    player2Points
+                ) shouldBe tennisScoreNumbers.isAdvantagePlayer2(player2Points, player1Points)
+            }
+        }
+
 
     }
 

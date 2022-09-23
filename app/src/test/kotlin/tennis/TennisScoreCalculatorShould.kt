@@ -14,6 +14,7 @@ class TennisScoreCalculatorShould : FreeSpec({
         tennisScoreNumbers = mockk()
         tennisScoreCalculator = TennisScoreCalculator.newInstance(tennisScoreNumbers)
         every { tennisScoreNumbers.isAdvantagePlayer1(any(), any()) } returns false
+        every { tennisScoreNumbers.isAdvantagePlayer2(any(), any()) } returns false
         every { tennisScoreNumbers.isEven(any(), any()) } returns false
         every { tennisScoreNumbers.isDeuce(any(), any()) } returns false
     }
@@ -74,12 +75,20 @@ class TennisScoreCalculatorShould : FreeSpec({
         ) shouldBe "deuce"
     }
 
-    "If at least three points have been scored by each player and a player has one more point than his opponent, the score is “advantage” for the player in the lead." - {
+    "Player1: If at least three points have been scored by each player and a player has one more point than his opponent, the score is “advantage” for the player in the lead." - {
         every { tennisScoreNumbers.isAdvantagePlayer1(any(), any()) } returns true
         tennisScoreCalculator.score(
-            3,
+            4,
             3
         ) shouldBe "advantage player1"
+    }
+
+    "Player2: If at least three points have been scored by each player and a player has one more point than his opponent, the score is “advantage” for the player in the lead." - {
+        every { tennisScoreNumbers.isAdvantagePlayer2(any(), any()) } returns true
+        tennisScoreCalculator.score(
+            3,
+            4
+        ) shouldBe "advantage player2"
     }
 
 })
